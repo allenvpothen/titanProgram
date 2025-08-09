@@ -1,16 +1,16 @@
 <img width="3188" height="1202" alt="frame (3)" src="https://github.com/user-attachments/assets/517ad8e9-ad22-457d-9538-a9e62d137cd7" />
 
 
-# [Project Name] 🎯
+# USELESS-0-METER 🎯
 
 
 ## Basic Details
-### Team Name: [Tech Titas]
+### Team Name: Tech Titans
 
 
 ### Team Members
-- Team Lead: [Aman zahi] - [Cusat]
-- Member 2: [Allen V pothen] - [Cusat]
+- Team Lead: Aman zahi - Cusat 
+- Member 2:  Allen V pothen  -  Cusat 
 
 
 ### Project Description
@@ -26,9 +26,9 @@ Based on a single text or a conversation we will find solution
 ## Technical Details
 ### Technologies/Components Used
 For Software:
-- [Python,html,css,java script]
-- [Flask]
-- [Flask
+-  Python,html,css,java script 
+-  Flask 
+-  Flask
 
 Handles HTTP requests, routing, serving HTML templates, and JSON APIs.
 
@@ -44,8 +44,8 @@ os (Python standard library)
 
 For environment variable access (e.g., to read your Gemini API key).
 
-]
-- [Vs code,python,git]
+ 
+-  Vs code,python,git 
 
 
 
@@ -54,7 +54,7 @@ For Software:
 
 
 # Run
-[commands]
+(https://useless-o-meter.vercel.app/)
 
 ### Project Documentation
 For Software:
@@ -116,55 +116,33 @@ Crush-O-Meter	Flask, Google Gemini API
 Charge-O-Meter	HTML, CSS, JavaScript
 
 # Screenshots (Add at least 3)
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+! Screenshot1 (Add screenshot 1 here with proper name)
+<img width="1857" height="916" alt="Screenshot 2025-08-09 182009" src="https://github.com/user-attachments/assets/e7cadfa0-3d72-4e3b-8153-d3138cb89337" />
+Home Page 
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
-
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
-
+! Screenshot2 (Add screenshot 2 here with proper name)
+![Uploading WhatsApp Image 2025-08-09 at 17.42.40_b8620bae.jpg…]()
+Crush-O-Meter
+! Screenshot3 (Add screenshot 3 here with proper name)
+<img width="1920" height="1080" alt="Screenshot 2025-08-09 172840" src="https://github.com/user-attachments/assets/9a70e659-ac53-443c-8cf7-b6ebf1f7cdde" />
+Charge-O-Meter
 # Diagrams
-![Workflow](Add your workflow/architecture diagram here)
-*Add caption explaining your workflow*
 
-For Hardware:
 
-# Schematic & Circuit
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
-
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
-
-# Build Photos
-![Components](Add photo of your components here)
-*List out all components shown*
-
-![Build](Add photos of build process here)
-*Explain the build steps*
-
-![Final](Add photo of final product here)
-*Explain the final build*
 
 ### Project Demo
 # Video
-[Add your demo video link here]
-*Explain what the video demonstrates*
 
 # Additional Demos
-[Add any extra demo materials/links]
+useless-o-meter.vercel.app
 
 ## Team Contributions
-- [Name 1]: [Specific contributions]
-- [Name 2]: [Specific contributions]
-- [Name 3]: [Specific contributions]
-
+-  AMAN ZAHI :  CRUSH O METRE 
+- ALLEN V POTHEN : CHARGE O METRE, INDEX PAGE
 ---
 Made with ❤️ at TinkerHub Useless Projects 
 
-![Static Badge](https://img.shields.io/badge/TinkerHub-24?color=%23000000&link=https%3A%2F%2Fwww.tinkerhub.org%2F)
-![Static Badge](https://img.shields.io/badge/UselessProjects--25-25?link=https%3A%2F%2Fwww.tinkerhub.org%2Fevents%2FQ2Q1TQKX6Q%2FUseless%2520Projects)
+! Static Badge (https://img.shields.io/badge/TinkerHub-24?color=%23000000&link=https%3A%2F%2Fwww.tinkerhub.org%2F)
+! Static Badge (https://img.shields.io/badge/UselessProjects--25-25?link=https%3A%2F%2Fwww.tinkerhub.org%2Fevents%2FQ2Q1TQKX6Q%2FUseless%2520Projects)
 
 
