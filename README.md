@@ -5,46 +5,115 @@
 
 
 ## Basic Details
-### Team Name: [Name]
+### Team Name: [Tech Titas]
 
 
 ### Team Members
-- Team Lead: [Name] - [College]
-- Member 2: [Name] - [College]
-- Member 3: [Name] - [College]
+- Team Lead: [Aman zahi] - [Cusat]
+- Member 2: [Allen V pothen] - [Cusat]
+
 
 ### Project Description
-[2-3 lines about what your project does]
+2 meters one for finding your relationship status with your crush called crush-o-metre
+the other called charge-o-metre a very fun meme oriented quiz 
 
 ### The Problem (that doesn't exist)
-[What ridiculous problem are you solving?]
+Relationship status with your crush
 
 ### The Solution (that nobody asked for)
-[How are you solving it? Keep it fun!]
+Based on a single text or a conversation we will find solution
 
 ## Technical Details
 ### Technologies/Components Used
 For Software:
-- [Languages used]
-- [Frameworks used]
-- [Libraries used]
-- [Tools used]
+- [Python,html,css,java script]
+- [Flask]
+- [Flask
 
-For Hardware:
-- [List main components]
-- [List specifications]
-- [List tools required]
+Handles HTTP requests, routing, serving HTML templates, and JSON APIs.
+
+google.generativeai
+
+Google’s Gemini API client library for calling the Gemini large language model (LLM) to generate the crush status analysis based on user input.
+
+re (Python standard library)
+
+Used for regular expressions to parse the LLM's response.
+
+os (Python standard library)
+
+For environment variable access (e.g., to read your Gemini API key).
+
+]
+- [Vs code,python,git]
+
+
 
 ### Implementation
 For Software:
-# Installation
-[commands]
+
 
 # Run
 [commands]
 
 ### Project Documentation
 For Software:
+1. Crush-O-Meter
+Overview:
+An AI-powered web app that analyzes chat messages to assign a playful "crush status" label with explanation, emoji, image, and audio.
+
+Tech Stack:
+
+Backend: Flask (Python)
+
+AI: Google Gemini API
+
+Frontend: HTML, CSS, JavaScript
+
+Features:
+
+Takes user chat input
+
+Uses AI to classify crush status
+
+Displays label, explanation, emoji, image, and plays audio
+
+Handles input errors gracefully
+
+Structure:
+
+/crush-o-meter
+  /static (images, audio)
+  /templates (HTML)
+  server.py
+2. Charge-O-Meter
+Overview:
+Interactive quiz app with battery charge animation, sounds, and video intro, rewarding correct answers with increasing charge.
+
+Tech Stack:
+
+Frontend only: HTML, CSS, JavaScript
+
+Media: YouTube iframe, audio files
+
+Fonts: Google Fonts (Inter)
+
+Features:
+
+Video intro with start button
+
+Multiple-choice questions
+
+Battery charge animation on correct answers
+
+Audio feedback for answers and quiz completion
+
+Responsive design
+l
+3. Tools and Libraries
+Project	Tools/Libraries
+Crush-O-Meter	Flask, Google Gemini API
+Charge-O-Meter	HTML, CSS, JavaScript
 
 # Screenshots (Add at least 3)
 ![Screenshot1](Add screenshot 1 here with proper name)
