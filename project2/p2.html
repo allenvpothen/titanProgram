@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Charge-O-Meter</title>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* --- Global Styles & Resets --- */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: #f3f4f6;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        color: #374151;
+      }
+
+      /* --- Quiz Container --- */
+      #quiz-container {
+        background-color: white;
+        padding: 24px;
+        border-radius: 12px;
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
+          0 4px 6px -4px rgba(0, 0, 0, 0.1);
+        width: 100%;
+        max-width: 750px;
+        margin: 7rem;
+      }
+
+      /* --- Header --- */
+      .quiz-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid #e5e7eb;
+        padding-bottom: 16px;
+        margin-bottom: 24px;
+        flex-wrap: wrap; /* Allows wrapping on small screens */
+        gap: 16px;
+      }
+
+      .quiz-header h1 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: #1f2937;
+      }
+
+      .score-container {
+        display: flex;
+        gap: 16px;
+        font-size: 1.125rem;
+        font-weight: 600;
+      }
+
+      #correct-score {
+        color: #16a34a;
+      }
+
+      #incorrect-score {
+        color: #dc2626;
+      }
+
+      /* --- Battery Styles --- */
+      .graphics-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin-top: 5rem;
+      }
+      .battery-container {
+        width: 15rem;
+        height: 6rem;
+        border: 3px solid #1f2937;
+        border-radius: 6px;
+        padding: 2px;
+        position: relative;
+        margin: 0 auto; /* Center battery in header on wrap */
+        transform: rotate(-90deg); /* Rotate battery */
+      }
+
+      .battery-container::after {
+        content: "";
+        position: absolute;
+        right: -1.1rem;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 0.8rem;
+        height: 2rem;
+        background-color: #1f2937;
+        border-radius: 0 3px 3px 0;
+      }
+
+      #battery-level {
+        height: 100%;
+        width: 0%; /* Starts empty */
+        background: linear-gradient(
+          90deg,
+          #fde047,
+          #84cc16
+        ); /* yellow to green gradient */
+        border-radius: 2px;
+        transition: width 0.5s ease-in-out; /* Smooth charging animation */
+      }
+      .imgs {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+      }
+      .anoop {
+        width: 25rem;
+        margin-top: 8rem;
+      }
+      .master {
+        width: 18rem;
+        margin-top: 8rem;
+      }
+      /* --- Quiz Content --- */
+      #question-text {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-bottom: 24px;
+      }
+
+      #options-container {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 16px;
+      }
+
+      .option-btn {
+        width: 100%;
+        padding: 12px;
+        border: 2px solid #d1d5db;
+        border-radius: 8px;
+        text-align: left;
+        background-color: white;
+        font-size: 1rem;
+        font-family: "Inter", sans-serif;
+        cursor: pointer;
+        transition: background-color 0.2s, border-color 0.2s;
+      }
+
+      .option-btn:hover:not(:disabled) {
+        background-color: #f3f4f6;
+        border-color: #9ca3af;
+      }
+
+      .option-btn.correct {
+        background-color: #22c55e;
+        color: white;
+        border-color: #16a34a;
+      }
+
+      .option-btn.incorrect {
+        background-color: #ef4444;
+        color: white;
+        border-color: #dc2626;
+      }
+
+      .option-btn:disabled {
+        cursor: not-allowed;
+      }
+
+      /* --- Footer and Buttons --- */
+      #quiz-footer {
+        margin-top: 32px;
+        padding-top: 16px;
+        border-top: 1px solid #e5e7eb;
+      }
+
+      .action-btn {
+        width: 100%;
+        color: white;
+        font-weight: 700;
+        font-size: 1rem;
+        padding: 12px 16px;
+        border-radius: 8px;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      #next-btn {
+        background-color: #1f2937;
+      }
+      #next-btn:hover {
+        background-color: #111827;
+      }
+
+      #restart-btn {
+        background-color: #3b82f6;
+      }
+      #restart-btn:hover {
+        background-color: #2563eb;
+      }
+
+      /* --- Results Screen --- */
+      #results-container {
+        text-align: center;
+      }
+      #results-title {
+        font-size: 2.25rem;
+        font-weight: 700;
+        color: #1f2937;
+        margin-bottom: 16px;
+      }
+      #results-summary {
+        font-size: 1.25rem;
+        color: #4b5563;
+        margin-bottom: 24px;
+      }
+
+      /* --- Utility Classes --- */
+      .hidden {
+        display: none;
+      }
+
+      /* --- Responsive Design --- */
+      @media (min-width: 640px) {
+        #quiz-container {
+          padding: 32px;
+        }
+        #question-text {
+          font-size: 1.5rem;
+        }
+        #options-container {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Background Music -->
+    <audio
+      id="backgroundMusic"
+      src="backgroundMusicLong.mp3"
+      autoplay
+      loop
+    ></audio>
+    <audio id="correct-sound" src="path/to/correct.mp3"></audio>
+    <audio id="wrong-sound" src="path/to/wrong.mp3"></audio>
+    <audio id="win-sound" src="path/to/win.mp3"></audio>
+
+    <!-- Quiz Container -->
+    <div id="quiz-container">
+      <!-- Header Section with Score and Battery -->
+      <div class="quiz-header">
+        <h1>🔋Charge-o-Meter🔋</h1>
+
+        <div class="score-container">
+          <span id="correct-score">Correct: 0</span>
+          <span id="incorrect-score">Wrong: 0</span>
+        </div>
+      </div>
+
+      <!-- Question and Options Area -->
+      <div id="quiz-content">
+        <h2 id="question-text">Question will appear here...</h2>
+        <div id="options-container"></div>
+      </div>
+
+      <!-- Results Screen -->
+      <div id="results-container" class="hidden">
+        <h2 id="results-title">Quiz Complete!</h2>
+        <p id="results-summary">You did great!</p>
+        <button id="restart-btn" class="action-btn">Try Again</button>
+      </div>
+
+      <!-- Footer with Next Button -->
+      <div id="quiz-footer">
+        <button id="next-btn" class="action-btn hidden">Next Question</button>
+      </div>
+    </div>
+    <div class="graphics-container">
+      <!-- Battery -->
+      <div class="battery-container">
+        <div id="battery-level"></div>
+      </div>
+      <div class="imgs">
+        <img src="Master.png" alt="" class="master" />
+
+        <img src="neutral.png" alt="" class="anoop" />
+      </div>
+    </div>
+    <script>
+      // --- DATA: Quiz Questions ---
+      const quizData = [
+        {
+          question: "From where Does the bike jump?",
+          options: ["Buidling", "Ground", "Truck", "Ramp"],
+          answer: "Ramp",
+        },
+        {
+          question: "How do we add explosions into the scene?",
+          options: [
+            "Mannenna Ozhich",
+            "Summoning Kannur Homie",
+            "Graphics il add cheyyum",
+            "Enthinada Kathichitt",
+          ],
+          answer: "Graphics il add cheyyum",
+        },
+        {
+          question: "How many cars should the bike jump over??",
+          options: ["1", "3", "0", "5"],
+          answer: "3",
+        },
+        {
+          question: "Item is?",
+          options: ["Vamban", "Yamandan", "Kidilam", "Grand"],
+          answer: "Yamandan",
+        },
+        {
+          question: "When does anoop menon gets charged?",
+          options: ["Kaanumbol", "Orkumbol", "Kelkumbol", "Parayumbol"],
+          answer: "Kelkumbol",
+        },
+      ];
+
+      // --- STATE ---
+      let currentQuestionIndex = 0;
+      let correctAnswers = 0;
+      let incorrectAnswers = 0;
+
+      // --- DOM ELEMENTS ---
+      const questionText = document.getElementById("question-text");
+      const optionsContainer = document.getElementById("options-container");
+      const nextBtn = document.getElementById("next-btn");
+      const correctScoreDisplay = document.getElementById("correct-score");
+      const incorrectScoreDisplay = document.getElementById("incorrect-score");
+      const quizContent = document.getElementById("quiz-content");
+      const resultsContainer = document.getElementById("results-container");
+      const resultsTitle = document.getElementById("results-title");
+      const resultsSummary = document.getElementById("results-summary");
+      const restartBtn = document.getElementById("restart-btn");
+      const quizFooter = document.getElementById("quiz-footer");
+      const batteryLevel = document.getElementById("battery-level"); // New battery element
+      let vid = document.getElementById("backgroundMusic");
+      vid.volume = 0.2;
+
+      // --- FUNCTIONS ---
+      function startQuiz() {
+        currentQuestionIndex = 0;
+        correctAnswers = 0;
+        incorrectAnswers = 0;
+        updateScoreDisplay();
+        batteryLevel.style.width = "0%"; // Reset battery on start
+        resultsContainer.classList.add("hidden");
+        quizContent.classList.remove("hidden");
+        quizFooter.classList.remove("hidden");
+        nextBtn.classList.add("hidden");
+        displayQuestion();
+        document.querySelector(".anoop").src = "neutral.png"; // Change image on correct answer
+      }
+
+      function displayQuestion() {
+        optionsContainer.innerHTML = "";
+        nextBtn.classList.add("hidden");
+        const currentQuestion = quizData[currentQuestionIndex];
+        questionText.textContent = currentQuestion.question;
+
+        currentQuestion.options.forEach((option) => {
+          const button = document.createElement("button");
+          button.textContent = option;
+          button.classList.add("option-btn");
+          button.onclick = () => selectAnswer(option, button);
+          optionsContainer.appendChild(button);
+        });
+      }
+
+      function selectAnswer(selectedOption, selectedButton) {
+        const currentQuestion = quizData[currentQuestionIndex];
+        const isCorrect = selectedOption === currentQuestion.answer;
+
+        if (isCorrect) {
+          correctAnswers++;
+          selectedButton.classList.add("correct");
+          // Update battery level
+          const chargePerQuestion = 100 / quizData.length;
+          const newWidth = correctAnswers * chargePerQuestion;
+          batteryLevel.style.width = newWidth + "%";
+          //anoop
+          document.querySelector(".anoop").src = "ThumbsUp.png"; // Change image on correct answer
+          if (
+            correctSound.src &&
+            !correctSound.src.endsWith("path/to/correct.mp3")
+          ) {
+            correctSound.currentTime = 0;
+            correctSound.play();
+          }
+        } else {
+          incorrectAnswers++;
+          selectedButton.classList.add("incorrect");
+          Array.from(optionsContainer.children).forEach((btn) => {
+            if (btn.textContent === currentQuestion.answer) {
+              btn.classList.add("correct");
+            }
+          });
+          //anoop
+          document.querySelector(".anoop").src = "ThumbsDown.png"; // Change image on correct answer
+          if (wrongSound.src && !wrongSound.src.endsWith("path/to/wrong.mp3")) {
+            wrongSound.currentTime = 0;
+            wrongSound.play();
+          }
+        }
+
+        Array.from(optionsContainer.children).forEach((btn) => {
+          btn.disabled = true;
+        });
+
+        updateScoreDisplay();
+        nextBtn.classList.remove("hidden");
+      }
+
+      function updateScoreDisplay() {
+        correctScoreDisplay.textContent = `Correct: ${correctAnswers}`;
+        incorrectScoreDisplay.textContent = `Wrong: ${incorrectAnswers}`;
+      }
+
+      function nextQuestion() {
+        currentQuestionIndex++;
+        if (currentQuestionIndex < quizData.length) {
+          displayQuestion();
+        } else {
+          showResults();
+        }
+      }
+
+      function showResults() {
+        quizContent.classList.add("hidden");
+        quizFooter.classList.add("hidden");
+        resultsContainer.classList.remove("hidden");
+        resultsSummary.textContent = `You scored ${correctAnswers} out of ${quizData.length}!`;
+
+        if (correctAnswers === quizData.length) {
+          resultsTitle.textContent = "Fully Charged! 🎉";
+
+          if (winSound.src && !winSound.src.endsWith("path/to/win.mp3")) {
+            winSound.currentTime = 0;
+            winSound.play();
+          }
+        } else if (correctAnswers >= quizData.length / 2) {
+          resultsTitle.textContent = "Great Job!";
+        } else {
+          resultsTitle.textContent = "Good Effort!";
+        }
+      }
+
+      // --- EVENT LISTENERS ---
+      nextBtn.addEventListener("click", nextQuestion);
+      restartBtn.addEventListener("click", startQuiz);
+
+      // --- INITIALIZATION ---
+      startQuiz();
+    </script>
+  </body>
+</html>
