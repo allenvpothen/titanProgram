@@ -1,7 +1,7 @@
 import re
+import os
 from flask import Flask, request, jsonify, render_template
 import google.generativeai as genai
-import os
 
 app = Flask(__name__)
 
@@ -75,8 +75,6 @@ Response: Maybe-Maybe — Playing it cool, keeping options open 🤔
 Chat message: "Will you marry me?"  
 Response: Marry Her — Straight to the point! True love alert 💍
 
-
-
 Now analyze this chat message: "{user_text}"
 """
 
@@ -105,4 +103,4 @@ Now analyze this chat message: "{user_text}"
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run(host="0.0.0.0", port=int(os.environ.get("PORT", 5000)))
