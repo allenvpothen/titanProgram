@@ -29,14 +29,13 @@ body {
   margin: 1rem 1.5em;
   text-align: center;
   background-color: #252525;
-  height: 16rem;
+  height: 34rem;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 0.5rem;
   transition: transform 0.3s ease;
-    padding-bottom: 1rem;
-  
+  padding-bottom: 1rem;
 }
 .project:hover {
   transform: scale(1.02);
