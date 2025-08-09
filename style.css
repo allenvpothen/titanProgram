@@ -35,7 +35,7 @@ body {
   align-items: center;
   border-radius: 0.5rem;
   transition: transform 0.3s ease;
-    padding-bottom: 1rem; /* Add space at the bottom */
+    padding-bottom: 1rem;
   
 }
 .project:hover {
